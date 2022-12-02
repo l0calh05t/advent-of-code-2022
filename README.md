@@ -14,3 +14,8 @@ The only (minor) optimization here, is to use `select_nth_unstable_by` instead o
 Or rather it is an optimization as long as the input isn't a pathological case, see [rust-lang/rust#102451](https://github.com/rust-lang/rust/issues/102451).
 
 Instead, I focused on using [automod](https://github.com/dtolnay/automod) and [linkme](https://github.com/dtolnay/linkme) to create a setup that should require a little less boilerplate per day than last year's workspace approach.
+
+## Day 2
+
+Nothing to see here.
+Only took the time to use integer-`repr` enums and compute the outcomes instead of using large, multi-case matches.
