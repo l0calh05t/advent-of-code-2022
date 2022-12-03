@@ -1,5 +1,4 @@
 use std::{
-	collections::HashSet,
 	fs::File,
 	io::{BufRead, BufReader},
 };
@@ -7,55 +6,56 @@ use std::{
 use crate::SOLUTIONS;
 
 use color_eyre::eyre::{eyre, Result};
+use itertools::Itertools;
 use linkme::distributed_slice;
 
 fn solution() -> Result<()> {
 	let file = File::open("inputs/day-03")?;
 	let mut file = BufReader::new(file);
 	let mut line = String::new();
-	let mut items = Vec::new();
 	let mut total_rucksacks = 0;
 	let mut total_groups = 0;
 	let mut elf = 0usize;
-	let mut group_set = HashSet::new();
+	let mut group_set = u64::MAX;
 	while file.read_line(&mut line)? != 0 {
 		let rucksack = line.trim().as_bytes();
-		for priority in rucksack.iter().map(|c| match c {
-			b'a'..=b'z' => Ok(c - b'a' + 1),
-			b'A'..=b'Z' => Ok(c - b'A' + 27),
-			_ => Err(eyre!("unexpected rucksack item")),
-		}) {
-			items.push(priority?);
-		}
-
-		// part 1
-		let size = items.len();
+		let size = rucksack.len();
 		if size % 2 != 0 {
 			return Err(eyre!("unexpected rucksack size"));
 		}
-		let (left, right) = items.split_at(size / 2);
 
-		let left: HashSet<_> = left.iter().copied().collect();
-		let right: HashSet<_> = right.iter().copied().collect();
+		let (left, right) = rucksack.split_at(size / 2);
+		let [left, right] = [left, right].map(|pocket| {
+			pocket
+				.iter()
+				.map(|&c| match c {
+					b'a'..=b'z' => Ok(c - b'a'),
+					b'A'..=b'Z' => Ok(c - b'A' + 26),
+					_ => Err(eyre!("unexpected rucksack item")),
+				})
+				.fold_ok(0u64, |set, item| set | 1 << item)
+		});
+		// could avoid this with try_map (nightly only #![feature(array_try_map)] so far)
+		let left = left?;
+		let right = right?;
 
-		total_rucksacks += left.intersection(&right).map(|&p| p as u64).sum::<u64>();
+		let evaluate = |set: u64| -> u64 {
+			(0..52)
+				.map(|i| if set & (1 << i) != 0 { i + 1 } else { 0 })
+				.sum()
+		};
+
+		// part 1
+		total_rucksacks += evaluate(left & right);
 
 		// part 2
-		let rucksack: HashSet<_> = items.iter().copied().collect();
-
-		let group_elf = elf % 3;
-		if group_elf == 0 {
-			group_set = rucksack;
-		} else {
-			let temp = group_set.intersection(&rucksack).copied().collect();
-			group_set = temp;
-		}
-		if group_elf == 2 {
-			total_groups += group_set.iter().map(|&p| p as u64).sum::<u64>();
+		group_set &= left | right;
+		if elf % 3 == 2 {
+			total_groups += evaluate(group_set);
+			group_set = u64::MAX;
 		}
 
 		line.clear();
-		items.clear();
 		elf += 1;
 	}
 	println!("{total_rucksacks}");

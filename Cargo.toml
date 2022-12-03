@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 automod = "1"
 color-eyre = "0.6"
+itertools = "0.10"
 linkme = "0.3"
