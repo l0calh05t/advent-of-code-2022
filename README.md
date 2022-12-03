@@ -19,3 +19,12 @@ Instead, I focused on using [automod](https://github.com/dtolnay/automod) and [l
 
 Nothing to see here.
 Only took the time to use integer-`repr` enums and compute the outcomes instead of using large, multi-case matches.
+
+## Day 3
+
+Pretty basic stuff, especially if you are using sets and working with normal `for`-loops (the combination of `Result` and iterators tends to get ugly real quick).
+In principle, the allocations from the sets could be removed by sorting the byte arrays in place and deduplicating/intersecting in place (`line` and `items` are already re-used between iterations).
+However, [`partition_dedup`](https://doc.rust-lang.org/std/primitive.slice.html#method.partition_dedup) isn't in stable Rust yet.
+Alternatively, [`iterrools::Itertools::dedup`](https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.dedup) could be used.
+While sorted intersection is fairly easy to implement (and available [as a crate](https://docs.rs/sorted_intersection/latest/sorted_intersection/)), I decided to stick with the conceptually straightforward `HashSet`-approach since there is really no need for speed.
+(I may change my mind in the future, and do it just because why not.)
