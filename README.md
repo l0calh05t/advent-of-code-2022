@@ -32,6 +32,6 @@ While sorted intersection is fairly easy to implement (and available [as a crate
 ### Update
 
 While taking a walk I came to the conclusion that none of that is necessary.
-Since there are only 52 possible items, the `HashSet` can just be replaced with and `u64` and intersections with `&` etc.
+Since there are only 52 possible items, the `HashSet` can just be replaced with a `u64` and intersections with `&` etc.
 To fold the results I went with [`itertools::Itertools::fold_ok`](https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.fold_ok).
 One of my favorite crates around.

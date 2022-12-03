@@ -36,8 +36,7 @@ fn solution() -> Result<()> {
 				.fold_ok(0u64, |set, item| set | 1 << item)
 		});
 		// could avoid this with try_map (nightly only #![feature(array_try_map)] so far)
-		let left = left?;
-		let right = right?;
+		let (left, right) = (left?, right?);
 
 		let evaluate = |set: u64| -> u64 {
 			(0..52)
