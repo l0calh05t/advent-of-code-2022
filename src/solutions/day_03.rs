@@ -1,23 +1,15 @@
-use std::{
-	fs::File,
-	io::{BufRead, BufReader},
-};
-
-use crate::SOLUTIONS;
+use crate::{try_for_each_line_in_file, SOLUTIONS};
 
 use color_eyre::eyre::{eyre, Result};
 use itertools::Itertools;
 use linkme::distributed_slice;
 
 fn solution() -> Result<()> {
-	let file = File::open("inputs/day-03")?;
-	let mut file = BufReader::new(file);
-	let mut line = String::new();
 	let mut total_rucksacks = 0;
 	let mut total_groups = 0;
 	let mut elf = 0usize;
 	let mut group_set = u64::MAX;
-	while file.read_line(&mut line)? != 0 {
+	try_for_each_line_in_file("inputs/day-03", |line| {
 		let rucksack = line.trim().as_bytes();
 		let size = rucksack.len();
 		if size % 2 != 0 {
@@ -54,9 +46,9 @@ fn solution() -> Result<()> {
 			group_set = u64::MAX;
 		}
 
-		line.clear();
 		elf += 1;
-	}
+		Ok(())
+	})?;
 	println!("{total_rucksacks}");
 	println!("{total_groups}");
 	Ok(())

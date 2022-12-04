@@ -1,9 +1,4 @@
-use std::{
-	fs::File,
-	io::{BufRead, BufReader},
-};
-
-use crate::SOLUTIONS;
+use crate::{try_for_each_line_in_file, SOLUTIONS};
 
 use color_eyre::eyre::Result;
 use linkme::distributed_slice;
@@ -59,11 +54,8 @@ impl RochambeauOutcome {
 }
 
 fn read_games() -> Result<Vec<(RochambeauPlay, RochambeauPlay)>> {
-	let file = File::open("inputs/day-02")?;
-	let mut file = BufReader::new(file);
 	let mut result = Vec::new();
-	let mut line = String::new();
-	while file.read_line(&mut line)? != 0 {
+	try_for_each_line_in_file("inputs/day-02", |line| {
 		if let Some((call, response)) = line.trim().split_once(' ') {
 			let call = match call {
 				"A" => Rock,
@@ -79,8 +71,8 @@ fn read_games() -> Result<Vec<(RochambeauPlay, RochambeauPlay)>> {
 			};
 			result.push((call, response));
 		}
-		line.clear();
-	}
+		Ok(())
+	})?;
 	Ok(result)
 }
 
