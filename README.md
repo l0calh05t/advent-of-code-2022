@@ -35,3 +35,7 @@ While taking a walk I came to the conclusion that none of that is necessary.
 Since there are only 52 possible items, the `HashSet` can just be replaced with a `u64` and intersections with `&` etc.
 To fold the results I went with [`itertools::Itertools::fold_ok`](https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.fold_ok).
 One of my favorite crates around.
+
+## Day 4
+
+Yet another easy one, so I refactored my iterative line-by-line processing (everyone else seems to do iterators-only this year and I already did that last year for a majority of tasks) into a common `try_for_each_line_in_file`-function.
