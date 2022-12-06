@@ -50,3 +50,7 @@ In the second part, you are likely to run into a spot where Rust’s borrow chec
 You can avoid this either by using a temporary (the result of `split_off` or a reused `mut Vec`) or by applying some `split_at_mut` trickery, which is what I did.
 
 Yes, of course you could also use `unsafe` 😉, but in that case you might accidentally miss the potential `from == to` case and summon [nasal demons 👃🏻👿](http://catb.org/jargon/html/N/nasal-demons.html).
+
+## Day 6
+
+No file reading this time, since existing functions to create sliding windows over a `Result` iterator aren't great, especially if the error type isn't `Clone`.
