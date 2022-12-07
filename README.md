@@ -6,6 +6,7 @@ So far these include:
 
 - [automod](https://github.com/dtolnay/automod)
 - [linkme](https://github.com/dtolnay/linkme)
+- [nom](https://github.com/Geal/nom)
 
 ## Day 1
 
@@ -54,3 +55,11 @@ Yes, of course you could also use `unsafe` 😉, but in that case you might acci
 ## Day 6
 
 No file reading this time, since existing functions to create sliding windows over a `Result` iterator aren't great, especially if the error type isn't `Clone`.
+
+## Day 7
+
+Again, all the effort lies in the parsing.
+Since I used [chumsky](https://github.com/zesterer/chumsky/) last year, I wanted to try [nom](https://github.com/Geal/nom) this year.
+However, I was not able to get it to parse the last `ls` output.
+In combination with [nom-bufreader](https://github.com/rust-bakery/nom-bufreader), the result was even worse with an infinite loop while parsing the last `ls`.
+Since it's getting late, I hacked together an ad-hoc parser instead 🫤
