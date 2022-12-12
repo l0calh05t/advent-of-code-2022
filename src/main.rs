@@ -1,11 +1,13 @@
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Read};
 use std::path::Path;
 use std::str::FromStr;
 
 use color_eyre::eyre::Result;
+use itertools::Itertools;
 use linkme::distributed_slice;
+use ndarray::{prelude::*, ErrorKind::IncompatibleShape, ShapeError};
 
 mod solutions {
 	automod::dir!("src/solutions");
@@ -59,6 +61,32 @@ where
 		Ok(())
 	})?;
 	Ok(result)
+}
+
+fn read_digit_field(file_name: &str) -> Result<Array2<u8>> {
+	let mut bytes = Vec::new();
+	File::open(file_name)?.read_to_end(&mut bytes)?;
+	let mut lines = 0usize;
+	let mut columns = None;
+	let values = bytes
+		.split(|&b| b == b'\n')
+		.map(|line| {
+			if line.is_empty() {
+				return Ok(line);
+			}
+			lines += 1;
+			if let Some(columns) = columns {
+				if columns != line.len() {
+					return Err(ShapeError::from_kind(IncompatibleShape).into());
+				}
+			}
+			columns = Some(line.len());
+			Ok(line)
+		})
+		.flatten_ok()
+		.map_ok(|&b| b.checked_sub(b'0').unwrap())
+		.collect::<Result<Vec<_>>>()?;
+	Ok(Array2::from_shape_vec((lines, columns.unwrap()), values)?)
 }
 
 fn main() -> Result<()> {

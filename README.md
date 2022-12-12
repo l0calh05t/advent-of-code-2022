@@ -63,3 +63,9 @@ Since I used [chumsky](https://github.com/zesterer/chumsky/) last year, I wanted
 However, I was not able to get it to parse the last `ls` output.
 In combination with [nom-bufreader](https://github.com/rust-bakery/nom-bufreader), the result was even worse with an infinite loop while parsing the last `ls`.
 Since it's getting late, I hacked together an ad-hoc parser instead 🫤
+
+## Day 8
+
+Several days late because I was on brief vacation to London to see The Nightmare Before Christmas in Concert (totally worth it!! 🎃🎅🏿👻❄️🦇🎄).
+Finally, some re-use from last year, at least the IO using `read_digit_field`.
+Avoiding code duplication between directions using iterators was not trivial, but I think it turned out ok.
