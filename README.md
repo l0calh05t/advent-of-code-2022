@@ -69,3 +69,9 @@ Since it's getting late, I hacked together an ad-hoc parser instead 🫤
 Several days late because I was on brief vacation to London to see The Nightmare Before Christmas in Concert (totally worth it!! 🎃🎅🏿👻❄️🦇🎄).
 Finally, some re-use from last year, at least the IO using `read_digit_field`.
 Avoiding code duplication between directions using iterators was not trivial, but I think it turned out ok.
+
+## Day 9
+
+I'm currently reading the file twice, so that's not ideal, but the solution is the same for both due to the use of const generics!
+I still wish we had full const generics, though.
+Non-type template parameters and variadic templates are the two C++ features I regularly wish we had in Rust.
