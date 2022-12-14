@@ -76,6 +76,11 @@ I'm currently reading the file twice, so that's not ideal, but the solution is t
 I still wish we had full const generics, though.
 Non-type template parameters and variadic templates are the two C++ features I regularly wish we had in Rust.
 
+## Day 10
+
+Another fairly easy one, no special crates either.
+Nothing like last years 'assembly', but that was Day 24.
+
 ## Day 11
 
 Another attempt at using [nom](https://github.com/Geal/nom) with [nom-bufreader](https://github.com/rust-bakery/nom-bufreader), again without success.
