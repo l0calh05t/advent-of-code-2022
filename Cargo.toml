@@ -9,4 +9,6 @@ color-eyre = "0.6"
 itertools = "0.10"
 linkme = "0.3"
 ndarray = { version = "0.15", features = ["rayon"] }
+nom = "7"
+num = "0.4"
 regex = "1"

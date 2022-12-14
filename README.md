@@ -75,3 +75,15 @@ Avoiding code duplication between directions using iterators was not trivial, bu
 I'm currently reading the file twice, so that's not ideal, but the solution is the same for both due to the use of const generics!
 I still wish we had full const generics, though.
 Non-type template parameters and variadic templates are the two C++ features I regularly wish we had in Rust.
+
+## Day 11
+
+Another attempt at using [nom](https://github.com/Geal/nom) with [nom-bufreader](https://github.com/rust-bakery/nom-bufreader), again without success.
+Even without num-bufreader, I couldn't get nom's streaming combinators to work as expected.
+Reading the entire file up front and using complete combinators worked without other changes though.
+Not sure PEG parsers and I will ever be friends.
+The task itself easy enough, if you know some math.
+I used `lcm` to combine the factors, but later noticed all factors are prime, so I could have just multiplied them.
+I reused the Day 1 optimization here.
+Like Day 5 with two indices, we ideally want mutable references to items at three indices here.
+Doing it without `unsafe` is definitely possible, but extremely unwieldy, so I implemented a generic `pick_disjoint_mut` that performs the necessary checks (index validity and disjointedness), then just uses a line of `unsafe` code.
