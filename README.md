@@ -92,3 +92,10 @@ I used `lcm` to combine the factors, but later noticed all factors are prime, so
 I reused the Day 1 optimization here.
 Like Day 5 with two indices, we ideally want mutable references to items at three indices here.
 Doing it without `unsafe` is definitely possible, but extremely unwieldy, so I implemented a generic `pick_disjoint_mut` that performs the necessary checks (index validity and disjointedness), then just uses a line of `unsafe` code.
+
+## Day 12
+
+Pathfinding forward and reverse, easily solve with good old Dijkstra.
+No point in re-implementing it, so I used the very nice [pathfinding](https://github.com/samueltardieu/pathfinding) crate again, like last year for Day 23.
+I really like not having to create an explicit graph and the simple interface.
+Didn't notice too much of a difference between the new 4.*x* version and 3.*x* version I used last year.
