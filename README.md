@@ -99,3 +99,9 @@ Pathfinding forward and reverse, easily solve with good old Dijkstra.
 No point in re-implementing it, so I used the very nice [pathfinding](https://github.com/samueltardieu/pathfinding) crate again, like last year for Day 23.
 I really like not having to create an explicit graph and the simple interface.
 Didn't notice too much of a difference between the new 4.*x* version and 3.*x* version I used last year.
+
+## Day 13
+
+All the work is in the parsing again (using nom once more, but with `&str` instead of `&[u8]` this time).
+The rest of the task pretty much writes itself.
+Quite literally in Rust 🦀 due to `#[derive(...)]`.
