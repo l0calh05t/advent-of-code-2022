@@ -5,6 +5,7 @@ I am *not* attempting to compete for any leaderboards, just doing these for fun 
 So far these include:
 
 - [automod](https://github.com/dtolnay/automod)
+- [derive_more](https://github.com/JelteF/derive_more)
 - [linkme](https://github.com/dtolnay/linkme)
 - [nom](https://github.com/Geal/nom)
 
@@ -105,3 +106,10 @@ Didn't notice too much of a difference between the new 4.*x* version and 3.*x* v
 All the work is in the parsing again (using nom once more, but with `&str` instead of `&[u8]` this time).
 The rest of the task pretty much writes itself.
 Quite literally in Rust 🦀 due to `#[derive(...)]`.
+
+## Day 14
+
+Not particularly challenging, but a fun one.
+Used [derive_more](https://github.com/JelteF/derive_more) on this one for `IntoIter`.
+Also added a custom `impl Display` for my simulation state, but graphical output would be even neater.
+I may have to add some form of graphical output at some point.

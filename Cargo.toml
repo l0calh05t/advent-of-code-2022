@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 automod = "1"
 color-eyre = "0.6"
+derive_more = "0.99"
 itertools = "0.10"
 linkme = "0.3"
 ndarray = { version = "0.15", features = ["rayon"] }
