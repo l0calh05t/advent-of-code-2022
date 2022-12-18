@@ -6,6 +6,7 @@ So far these include:
 
 - [automod](https://github.com/dtolnay/automod)
 - [derive_more](https://github.com/JelteF/derive_more)
+- [intervallum](https://github.com/ptal/intervallum)
 - [linkme](https://github.com/dtolnay/linkme)
 - [nom](https://github.com/Geal/nom)
 
@@ -113,3 +114,12 @@ Not particularly challenging, but a fun one.
 Used [derive_more](https://github.com/JelteF/derive_more) on this one for `IntoIter`.
 Also added a custom `impl Display` for my simulation state, but graphical output would be even neater.
 I may have to add some form of graphical output at some point.
+
+## Day 15
+
+This one is a bit more challenging to get fast enough.
+For the first task, I used [intervallum](https://github.com/ptal/intervallum) to store the valid intervals efficiently.
+Worked sufficiently well, but seems to require unnecessarily many allocations (or I'm using it wrong).
+Despite the many allocations, I just brute-forced part two (four million iterations isn't *that* much these days—only 10 seconds to scan the entire range; even less to find the solution).
+There is definitely optimization potential, but that would require a 2-D interval representation.
+Maybe a quadtree using sheared coordinates to turn the “diamonds” created by the L1-norm into squares?
