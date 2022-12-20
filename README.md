@@ -122,4 +122,9 @@ For the first task, I used [intervallum](https://github.com/ptal/intervallum) to
 Worked sufficiently well, but seems to require unnecessarily many allocations (or I'm using it wrong).
 Despite the many allocations, I just brute-forced part two (four million iterations isn't *that* much these days—only 10 seconds to scan the entire range; even less to find the solution).
 There is definitely optimization potential, but that would require a 2-D interval representation.
-Maybe a quadtree using sheared coordinates to turn the “diamonds” created by the L1-norm into squares?
+Maybe a quadtree using sheared coordinates to turn the “diamonds” created by the L1-norm into squares
+
+## Day 16
+
+While there are a number of ways to reduce the effective *n*, I don't think anything I did (or thought about doing so far) actually reduced complexity.
+In any case, not completely happy with the solution, and there's certainly more potential, but a runtime around 30s is good enough for something that needs to run to completion exactly once.
