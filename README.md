@@ -128,3 +128,9 @@ Maybe a quadtree using sheared coordinates to turn the “diamonds” created by
 
 While there are a number of ways to reduce the effective *n*, I don't think anything I did (or thought about doing so far) actually reduced complexity.
 In any case, not completely happy with the solution, and there's certainly more potential, but a runtime around 30s is good enough for something that needs to run to completion exactly once.
+
+## Day 17
+
+Part 1 can be simulated as is and is a good place to use [ndarray](https://github.com/rust-ndarray/ndarray) (not listed above, as I use it all the time).
+Part 2 quite obviously not solvable directly, since it would require several terabytes of RAM to solve directly, although you could reduce that to a constant amount by tracking the surface and not the positions, but that would still be insanely slow.
+The solution is, quite obviously since the inputs are cyclical, to make use of that periodicity.

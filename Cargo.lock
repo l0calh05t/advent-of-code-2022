@@ -31,6 +31,7 @@ dependencies = [
  "ndarray",
  "nom",
  "num",
+ "once_cell",
  "pathfinding",
  "regex",
 ]

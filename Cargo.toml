@@ -14,5 +14,6 @@ linkme = "0.3"
 ndarray = { version = "0.15", features = ["rayon"] }
 nom = "7"
 num = "0.4"
+once_cell = "1"
 pathfinding = "4"
 regex = "1"
