@@ -140,3 +140,10 @@ The solution is, quite obviously since the inputs are cyclical, to make use of t
 Expecting some weird “Part 2 will be the same but on a gigantic expanse thing,” I went off in the wrong direction and implemented Part 1 using a sparse representation.
 Part 2 turned out to be something much simpler.
 I could have gone with a proper [mesh data structure](https://www.igd.fraunhofer.de/sites/default/files/media/biblio/2017/2017_mueller-roemer_ternary_sparse_matrix_representation_for_volumetric_mesh_subdivision_and_processing_on_gpus.pdf) and determined interiors and exteriors topologically, but the volume is so small that I opted to go with a flood fill instead (padded to ensure a connected exterior)—especially since I had a flood fill practically ready to go [from last year](https://github.com/l0calh05t/advent-of-code-2021/blob/trunk/day-09/src/main.rs).
+
+## Day 19
+
+Ugh, depth first searches with pruning, my only weakness!
+Basically, this is a similar problem as Day 16, only much, much worse.
+After having some difficulties getting the heuristics/pruning right, I checked online for hints and took [this approach](https://www.reddit.com/r/adventofcode/comments/zpihwi/comment/j0zs065/).
+By avoiding pretty much all allocations within the iteration (except the geometric growth of the queue-`Vec`, which amortizes to no allocations), the whole thing runs in under 30 ms (3.3s for debug builds).
