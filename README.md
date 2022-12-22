@@ -134,3 +134,9 @@ In any case, not completely happy with the solution, and there's certainly more 
 Part 1 can be simulated as is and is a good place to use [ndarray](https://github.com/rust-ndarray/ndarray) (not listed above, as I use it all the time).
 Part 2 quite obviously not solvable directly, since it would require several terabytes of RAM to solve directly, although you could reduce that to a constant amount by tracking the surface and not the positions, but that would still be insanely slow.
 The solution is, quite obviously since the inputs are cyclical, to make use of that periodicity.
+
+## Day 18
+
+Expecting some weird “Part 2 will be the same but on a gigantic expanse thing,” I went off in the wrong direction and implemented Part 1 using a sparse representation.
+Part 2 turned out to be something much simpler.
+I could have gone with a proper [mesh data structure](https://www.igd.fraunhofer.de/sites/default/files/media/biblio/2017/2017_mueller-roemer_ternary_sparse_matrix_representation_for_volumetric_mesh_subdivision_and_processing_on_gpus.pdf) and determined interiors and exteriors topologically, but the volume is so small that I opted to go with a flood fill instead (padded to ensure a connected exterior)—especially since I had a flood fill practically ready to go [from last year](https://github.com/l0calh05t/advent-of-code-2021/blob/trunk/day-09/src/main.rs).
