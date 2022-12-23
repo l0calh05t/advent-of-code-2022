@@ -147,3 +147,9 @@ Ugh, depth first searches with pruning, my only weakness!
 Basically, this is a similar problem as Day 16, only much, much worse.
 After having some difficulties getting the heuristics/pruning right, I checked online for hints and took [this approach](https://www.reddit.com/r/adventofcode/comments/zpihwi/comment/j0zs065/).
 By avoiding pretty much all allocations within the iteration (except the geometric growth of the queue-`Vec`, which amortizes to no allocations), the whole thing runs in under 30 ms (3.3s for debug builds).
+
+## Day 20
+
+This one sounds more complicated than it is.
+A bit of modulo arithmetic and the right choice of data structure, and you're done!
+While this particular data structure [is a bit of a bogeyman](https://rcoh.me/posts/rust-linked-list-basically-impossible/) in Rust, implementing it with indices instead of pointers actually fits this problem incredibly well!
