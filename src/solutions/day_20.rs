@@ -47,11 +47,22 @@ fn decode(numbers: &[isize], key: isize, rounds: usize) -> Result<isize> {
 			let old_next = numbers[current].next;
 			let old_previous = numbers[current].previous;
 
-			let mut next = numbers[current].next;
-			for _ in 0..d {
-				next = numbers[next].next;
-			}
-			let previous = numbers[next].previous;
+			let (next, previous) = if d < length as isize / 2 {
+				let mut next = numbers[current].next;
+				for _ in 0..d {
+					next = numbers[next].next;
+				}
+				let previous = numbers[next].previous;
+				(next, previous)
+			} else {
+				let mut previous = numbers[current].previous;
+				let d = length as isize - d - 1;
+				for _ in 0..d {
+					previous = numbers[previous].previous;
+				}
+				let next = numbers[previous].next;
+				(next, previous)
+			};
 
 			numbers[old_next].previous = old_previous;
 			numbers[old_previous].next = old_next;
