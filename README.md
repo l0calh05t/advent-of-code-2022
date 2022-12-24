@@ -153,3 +153,11 @@ By avoiding pretty much all allocations within the iteration (except the geometr
 This one sounds more complicated than it is.
 A bit of modulo arithmetic and the right choice of data structure, and you're done!
 While this particular data structure [is a bit of a bogeyman](https://rcoh.me/posts/rust-linked-list-basically-impossible/) in Rust, implementing it with indices instead of pointers actually fits this problem incredibly well!
+
+## Day 21
+
+Well this one was… annoying.
+Nothing complicated per se, but the second part essentially requires (simple) symbolic evaluation / solving.
+In Python I would have just thrown the problem at [SymPy](https://www.sympy.org/) and (probably) have been done.
+This way I wrote a very simplistic (with plenty of assumptions and unhandled edge cases), symbolic evaluator, simplifier, and solver, because a quick search didn't turn up anything for Rust.
+It works for my input?
