@@ -161,3 +161,8 @@ Nothing complicated per se, but the second part essentially requires (simple) sy
 In Python I would have just thrown the problem at [SymPy](https://www.sympy.org/) and (probably) have been done.
 This way I wrote a very simplistic (with plenty of assumptions and unhandled edge cases), symbolic evaluator, simplifier, and solver, because a quick search didn't turn up anything for Rust.
 It works for my input?
+
+## Day 22
+
+Simple turtle graphics (without actually drawing anything) and basic coordinate frame transformations.
+Reminded me a bit of [Karel J Robot](https://www.cafepress.com/kareljrobot) in my first semester of computer science, circa 2004.
