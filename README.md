@@ -180,3 +180,8 @@ Additionally, this was one of those rare occasions where I used a labeled `for`-
 More pathfinding!
 This time with an obvious A* heuristic.
 And of course, still with the [pathfinding](https://github.com/samueltardieu/pathfinding) crate.
+
+## Day 25
+
+As usual for Day 25, something easy to finish the Advent of Code.
+Just some conversion to/from integers with a weird radix and negative digits.
