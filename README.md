@@ -174,3 +174,9 @@ Went for a straightforward hashmap/hashset solution here, a 2D array would have 
 In any case, since Rust's default cryptographically secure hasher was a bit slow, I used [rustc-hash](https://github.com/rust-lang/rustc-hash) for this one.
 The same fast hash used within `rustc` itself.
 Additionally, this was one of those rare occasions where I used a labeled `for`-loop.
+
+## Day 24
+
+More pathfinding!
+This time with an obvious A* heuristic.
+And of course, still with the [pathfinding](https://github.com/samueltardieu/pathfinding) crate.
