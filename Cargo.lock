@@ -36,6 +36,7 @@ dependencies = [
  "pathfinding",
  "rayon",
  "regex",
+ "rustc-hash",
 ]
 
 [[package]]

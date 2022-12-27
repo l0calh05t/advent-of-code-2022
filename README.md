@@ -9,6 +9,7 @@ So far these include:
 - [intervallum](https://github.com/ptal/intervallum)
 - [linkme](https://github.com/dtolnay/linkme)
 - [nom](https://github.com/Geal/nom)
+- [rustc-hash](https://github.com/rust-lang/rustc-hash)
 
 ## Day 1
 
@@ -166,3 +167,10 @@ It works for my input?
 
 Simple turtle graphics (without actually drawing anything) and basic coordinate frame transformations.
 Reminded me a bit of [Karel J Robot](https://www.cafepress.com/kareljrobot) in my first semester of computer science, circa 2004.
+
+## Day 23
+
+Went for a straightforward hashmap/hashset solution here, a 2D array would have fit in memory just fine though and probably would have been faster.
+In any case, since Rust's default cryptographically secure hasher was a bit slow, I used [rustc-hash](https://github.com/rust-lang/rustc-hash) for this one.
+The same fast hash used within `rustc` itself.
+Additionally, this was one of those rare occasions where I used a labeled `for`-loop.
